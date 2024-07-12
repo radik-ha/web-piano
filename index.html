@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Piano</title>
+	<style type="text/css">
+		* {
+			font-family: verdana;
+		}
+		#piano {
+			background-image: url(https://i.pinimg.com/originals/87/1e/0c/871e0c812e42f97f3f9e8b2ac0384228.gif);
+			background-size: cover;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			width: 100%;
+			height: 90vh;
+			border-radius: 2rem;
+			font-size: 3vw;
+			color: gold;
+		}
+		#piano-in {
+			padding: 3rem;
+			background-image: url(https://c4.wallpaperflare.com/wallpaper/761/692/842/wood-texture-wooden-surface-pattern-wallpaper-preview.jpg);
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#piano h1 {
+			margin: 0;
+		}
+		.outer {
+			border: 1px solid black;
+			width: 5%;
+			height: 70vh;
+			background-color: white;
+			display: flex;
+			justify-content: right;
+		}
+		.outer:hover{
+			background-color: gold;
+		}
+		.inner {
+			width: 50%;
+			height: 50%;
+			background-color: black;
+		}
+		#mus1{
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 20%;
+		}
+		#mus2 {
+			position: fixed;
+			bottom: 0;
+			width: 20%;
+			right: 0;			
+			transform: rotateY(180deg);
+		}
+	</style>
+</head>
+<body>
+	<img id="mus1" src="https://cliply.co/wp-content/uploads/2021/09/142109580_MUSIC_TONES_400px.gif" alt="">
+	<img id="mus2" src="https://cliply.co/wp-content/uploads/2021/09/142109580_MUSIC_TONES_400px.gif" alt="">
+	<div id="piano">
+		<center><h1>WEB PIANO</h1></center>
+		<div id="piano-in">
+		</div>
+	</div>
+	<script type="text/javascript">
+		function createButton(i){
+			const out = document.createElement("div");
+			out.setAttribute("class", "outer");
+			out.addEventListener("click", ()=>{
+				const aud = new Audio("music/"+(i+1)+".mp3");
+				aud.play();				
+			});
+			const inn = document.createElement("div");
+			inn.setAttribute("class", "inner");
+			out.appendChild(inn);
+			const piano = document.getElementById("piano-in");
+			piano.appendChild(out);
+		}
+		for(let i=0; i<10; i++){
+			createButton(i);
+		}
+	</script>
+</body>
+</html>
